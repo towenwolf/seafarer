@@ -26,8 +26,9 @@ echo "Waiting for blob sink emulator to be ready..."
 max_attempts=30
 attempt=0
 while [ $attempt -lt $max_attempts ]; do
-    if curl -s -o /dev/null -w "%{http_code}" "$BLOB_ENDPOINT" | grep -q "400\|404"; then
+    if nc -z 127.0.0.1 10100 2>/dev/null || (command -v timeout &> /dev/null && timeout 1 bash -c "echo > /dev/tcp/127.0.0.1/10100" 2>/dev/null); then
         echo "Emulator is ready!"
+        sleep 2  # Give it a moment to fully initialize
         break
     fi
     attempt=$((attempt + 1))
