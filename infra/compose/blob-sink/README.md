@@ -20,7 +20,7 @@ The blob-sink emulator receives Parquet output files from the data pipeline afte
 ### Start the Emulator
 
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
 
 ### Validate Parquet Output
@@ -79,7 +79,7 @@ az storage blob download \
 ### Stop the Emulator
 
 ```bash
-docker-compose down
+docker compose down
 ```
 
 ### Clean Up Data
@@ -87,7 +87,7 @@ docker-compose down
 To remove the emulator and all its data:
 
 ```bash
-docker-compose down -v
+docker compose down -v
 ```
 
 ## Requirements

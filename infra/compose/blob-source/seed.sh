@@ -17,7 +17,7 @@ echo ""
 # Check if Azure CLI is available
 if ! command -v az &> /dev/null; then
     echo "Error: Azure CLI (az) is not installed"
-    echo "Please install Azure CLI: https://docs.microsoft.com/en-us/cli/azure/install-azure-cli"
+    echo "Please install Azure CLI: https://learn.microsoft.com/en-us/cli/azure/install-azure-cli"
     exit 1
 fi
 
@@ -73,7 +73,7 @@ fi
 echo "Uploading CSV file to blob storage..."
 az storage blob upload \
     --container-name "$CONTAINER_NAME" \
-    --name "$(basename $CSV_FILE)" \
+    --name "$(basename "$CSV_FILE")" \
     --file "$CSV_FILE" \
     --account-name "$STORAGE_ACCOUNT" \
     --account-key "$STORAGE_KEY" \
@@ -84,7 +84,7 @@ az storage blob upload \
 echo ""
 echo "✓ Successfully seeded blob source emulator!"
 echo "✓ Container: $CONTAINER_NAME"
-echo "✓ File: $(basename $CSV_FILE)"
+echo "✓ File: $(basename "$CSV_FILE")"
 echo ""
 echo "To verify, you can list the blobs:"
 echo "az storage blob list \\"

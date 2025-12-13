@@ -17,7 +17,7 @@ echo ""
 # Check if Azure CLI is available
 if ! command -v az &> /dev/null; then
     echo "Error: Azure CLI (az) is not installed"
-    echo "Please install Azure CLI: https://docs.microsoft.com/en-us/cli/azure/install-azure-cli"
+    echo "Please install Azure CLI: https://learn.microsoft.com/en-us/cli/azure/install-azure-cli"
     exit 1
 fi
 

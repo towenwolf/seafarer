@@ -33,11 +33,11 @@ Both emulators run independently on separate ports and use separate Docker volum
 ```bash
 # Start source emulator
 cd blob-source
-docker-compose up -d
+docker compose up -d
 
 # Start sink emulator
 cd ../blob-sink
-docker-compose up -d
+docker compose up -d
 ```
 
 ### Seed Source with CSV Data
@@ -71,11 +71,11 @@ This will:
 ```bash
 # Stop source emulator
 cd blob-source
-docker-compose down
+docker compose down
 
 # Stop sink emulator
 cd ../blob-sink
-docker-compose down
+docker compose down
 ```
 
 ## Emulator Details
@@ -143,8 +143,8 @@ docker logs azurite-sink
 ### Clean Up All Data
 
 ```bash
-cd blob-source && docker-compose down -v
-cd ../blob-sink && docker-compose down -v
+cd blob-source && docker compose down -v
+cd ../blob-sink && docker compose down -v
 ```
 
 ## Troubleshooting
@@ -153,7 +153,7 @@ cd ../blob-sink && docker-compose down -v
 
 If you encounter port conflicts:
 1. Check if other services are using ports 10000-10002 or 10100-10102
-2. Modify the port mappings in the respective `docker-compose.yml` files
+2. Modify the port mappings in the respective `docker compose.yml` files
 3. Update the connection strings accordingly
 
 ### Connection Issues
