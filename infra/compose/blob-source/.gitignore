@@ -1,0 +1,6 @@
+# Generated CSV files
+*.csv
+
+# Temporary files
+*.tmp
+*.bak

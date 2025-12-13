@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  azurite-sink:
+    image: mcr.microsoft.com/azure-storage/azurite:latest
+    container_name: azurite-sink
+    hostname: azurite-sink
+    restart: always
+    ports:
+      - "10100:10000"  # Blob service port (different external port)
+      - "10101:10001"  # Queue service port (different external port)
+      - "10102:10002"  # Table service port (different external port)
+    volumes:
+      - azurite-sink-data:/data
+    command: "azurite --blobHost 0.0.0.0 --queueHost 0.0.0.0 --tableHost 0.0.0.0 --loose --skipApiVersionCheck"
+    environment:
+      - AZURITE_ACCOUNTS=devstoreaccount1:Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==
+
+volumes:
+  azurite-sink-data:
+    driver: local
