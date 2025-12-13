@@ -1,0 +1,48 @@
+[tool.poetry]
+name = "seafarer"
+version = "0.1.0"
+description = "Data pipeline service with configurable ports for blob storage"
+authors = ["Travis Wolf <towenwolf@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "seafarer", from = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+azure-storage-blob = "^12.19.0"
+pandas = "^2.1.0"
+pyarrow = ">=14.0.0"
+pydantic = "^2.5.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.0"
+pytest-asyncio = "^0.21.0"
+pytest-cov = "^4.1.0"
+black = "^23.12.0"
+mypy = "^1.7.0"
+ruff = "^0.1.7"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 100
+target-version = ['py39']
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+
+[tool.mypy]
+python_version = "3.9"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+asyncio_mode = "auto"
