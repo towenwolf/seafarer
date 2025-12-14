@@ -1,5 +1,6 @@
 """Blob storage CSV reader port implementation."""
 
+import io
 from typing import Iterator
 
 import pandas as pd
@@ -46,8 +47,6 @@ class BlobCsvReader(SourcePort):
         content = blob_data.readall()
 
         # Parse CSV content
-        import io
-
         df = pd.read_csv(io.BytesIO(content))
         yield df
 

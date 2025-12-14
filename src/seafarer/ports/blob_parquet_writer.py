@@ -3,6 +3,7 @@
 import io
 
 import pandas as pd
+from azure.core.exceptions import ResourceExistsError
 from azure.storage.blob import BlobServiceClient
 
 from seafarer.ports.base import SinkPort
@@ -44,7 +45,7 @@ class BlobParquetWriter(SinkPort):
         )
         try:
             container_client.create_container()
-        except Exception:
+        except ResourceExistsError:
             # Container already exists
             pass
 
